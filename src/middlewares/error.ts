@@ -3,6 +3,8 @@ import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
 import ApiError from "../utils/AppError";
 
+type response 
+
 function errorConverter(
   err: any,
   req: Request,
