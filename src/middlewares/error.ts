@@ -3,7 +3,12 @@ import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
 import ApiError from "../utils/AppError";
 
-type response 
+interface responseTypeError {
+  code: number;
+  status: string;
+  message: string;
+  stack?: string | undefined;
+}
 
 function errorConverter(
   err: any,
@@ -35,7 +40,7 @@ function errorHandler(
     message = httpStatus["500_MESSAGE"];
   }
   res.locals.errorMessage = message;
-  const response = {
+  const response: responseTypeError = {
     code: statusCode,
     status: status,
     message: message,
